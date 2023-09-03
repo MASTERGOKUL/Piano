@@ -121,6 +121,7 @@ header input {
 
 @media screen and (max-width: 615px) {
 body{
+  margin-top: 10%;
   user-select: none;
 }
 .wrapper{
