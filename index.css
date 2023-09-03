@@ -122,7 +122,9 @@ header input {
 @media screen and (max-width: 615px) {
 body{
   margin-top: 10%;
-  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 .wrapper{
   transform: rotate(90deg);
