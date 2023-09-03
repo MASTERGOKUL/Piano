@@ -121,6 +121,12 @@ header input {
 
 @media screen and (max-width: 615px) {
 body{
-  transform: rotate(90deg);
+  user-select: none;
 }
+.wrapper{
+  transform: rotate(90deg);
+
+}
+.piano-keys .black {
+  width: 34px;}
 }
