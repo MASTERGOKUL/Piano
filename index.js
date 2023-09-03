@@ -127,11 +127,11 @@ pianoKeys.forEach((key) => {
 
   key.addEventListener("touchstart", (event) => {
     event.preventDefault(); // Prevent the default touch event
-    const note = li.getAttribute("data-note");
+    const note = key.getAttribute("data-note");
     handleKeyPress(note, note);
   });
   key.addEventListener("touchend", () => {
-    const note = li.getAttribute("data-note");
+    const note = key.getAttribute("data-note");
     handleKeyRelease(note);
   });
 });
