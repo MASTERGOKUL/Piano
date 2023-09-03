@@ -120,6 +120,9 @@ header input {
 
 
 @media screen and (max-width: 615px) {
+  .keyboard{
+    display: none;
+  }
   *{
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
@@ -134,4 +137,11 @@ body{
 }
 .piano-keys .black {
   width: 34px;}
+}
+
+.keyboard{
+  font-family:cursive;
+  font-size: 0.7rem !important;
+  position: relative;
+  top: 3ch;
 }

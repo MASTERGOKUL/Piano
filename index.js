@@ -113,24 +113,29 @@ const showHideKeys = () => {
 pianoKeys.forEach((key) => {
   key.addEventListener("mousedown", () => {
     const note = key.getAttribute("data-note");
+    key.classList.add("active");
     handleKeyPress(note, note);
   });
   key.addEventListener("mouseup", () => {
     const note = key.getAttribute("data-note");
+    key.classList.remove("active");
     handleKeyRelease(note);
   });
-
+  
   key.addEventListener("mouseleave", () => {
+    key.classList.remove("active");
     const note = key.getAttribute("data-note");
     handleKeyRelease(note);
   });
-
+  
   key.addEventListener("touchstart", (event) => {
+    key.classList.add("active");
     event.preventDefault(); // Prevent the default touch event
     const note = key.getAttribute("data-note");
     handleKeyPress(note, note);
   });
   key.addEventListener("touchend", () => {
+    key.classList.remove("active");
     const note = key.getAttribute("data-note");
     handleKeyRelease(note);
   });
@@ -142,6 +147,10 @@ document.addEventListener("keydown", (event) => {
   const note = keyToNoteMap[key];
   if (note) {
     event.preventDefault(); // Prevent the default action of the key press
+    const element = document.querySelector(`[data-note="${note}"]`);
+    if (element) {
+      element.classList.add("active");
+    }
     handleKeyPress(key, note);
   }
 });
@@ -150,9 +159,24 @@ document.addEventListener("keyup", (event) => {
   const key = event.key.toLowerCase(); // Convert key to lowercase
   const note = keyToNoteMap[key];
   if (note) {
+    const element = document.querySelector(`[data-note="${note}"]`);
+    if (element) {
+      element.classList.remove("active");
+    }
     handleKeyRelease(note);
   }
 });
 
 keysCheckbox.addEventListener("click", showHideKeys);
 volumeSlider.addEventListener("input", handleVolume);
+
+// giving the class keyborad elements keyToNoteMap values
+const keyboardElements = document.querySelectorAll(".keyboard");
+let i=0;
+k = Object.keys(keyToNoteMap);
+console.log(k)
+keyboardElements.forEach((element) => {
+  element.innerHTML = k[i];
+  i++;
+}
+);
